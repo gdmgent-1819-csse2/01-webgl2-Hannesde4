@@ -129,18 +129,18 @@ export default class TestMatrix3 extends TestMatrix {
     testRot() {
         console.info('test Matrix3.rot()')
         const α = 90
-        const y = 0
-        const z = 90
         const a = [
             3, 0, 0,
             1, 0, 0,
             2, 0, 0,
         ]
         const expected = [
-            
+            0, -3, 0,
+            0, -1, 0,
+            0, -2, 0,
         ]
         const m = new Matrix3(a)
-        m.rot(α, y, z)
+        m.rot(α)
         const actual = m.elements
         this.assertIdenticalRounded(actual, expected)
     }

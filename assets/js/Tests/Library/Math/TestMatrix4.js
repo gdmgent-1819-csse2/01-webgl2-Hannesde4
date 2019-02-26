@@ -148,7 +148,10 @@ export default class TestMatrix4 extends TestMatrix {
             0, 0, 0, 1,
         ]
         const expected = [
-            
+            0, -4, 0, 0,
+            3, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
         ]
         const m = new Matrix4(a)
         m.rot(α)

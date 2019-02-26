@@ -98,7 +98,7 @@ export default class TestVector3{
         const α = 2
         console.log('x:', x, 'y:', y, 'z:', z, 'α:', α)
         const expectedx = 2
-        const expectedy = 3
+        const expectedy = 0
         const expectedz = 2
         const v = new Vector3(x, y, z)
         v.rot(α)

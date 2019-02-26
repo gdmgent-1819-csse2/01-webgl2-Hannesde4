@@ -110,9 +110,9 @@ export default class TestVector4{
         const α = 2
         console.log('x:', x, 'y:', y, 'z:', z, 'w:', w, 'α:', α)
         const expectedx = 2
-        const expectedy = 3
+        const expectedy = 0
         const expectedz = 2
-        const expectedw = 4
+        const expectedw = 0
         const v = new Vector4(x, y, z, w)
         v.rot(α)
         const actualx = v.x

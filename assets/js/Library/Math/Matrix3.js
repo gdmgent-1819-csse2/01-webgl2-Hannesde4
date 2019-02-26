@@ -67,34 +67,15 @@ export default class Matrix3 {
      * werkt niet correct :(
      * 
      */
-    rot(α, b, y) {
+    rot(α) {
         α *= Math.PI / 180
-        const cosα = Math.cos(α)
-        const sinα = Math.sin(α)
-        const cosb = Math.cos(b)
-        const sinb = Math.sin(b)
-        const cosy = Math.cos(y)
-        const siny = Math.sin(y)
-        const a = this.elements
-        const Rx = [
-            1, 0, 0, 0,
-            0, cosα, -sinα, 0,
-            0, sinα, cosα, 0,
-            0, 0, 0, 1,
+        const cos = Math.cos(α)
+        const sin = Math.sin(α)
+        const r = [
+            cos, -sin, 0,
+            sin, cos, 0,
+            0, 0, 0,
         ]
-        const Ry = [
-            cosb, 0, sinb, 0,
-            0, 1, 0, 0,
-            -sinb, 0, cosb, 0,
-            0, 0, 0, 1,
-        ]
-        const Rz = [
-            cosy, -siny, 0, 0,
-            siny, cosy, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1,
-        ]
-        this.elements = [Rx, Ry, Rz]
-        this.mul(a);
+        this.mul(r);
     }
 }

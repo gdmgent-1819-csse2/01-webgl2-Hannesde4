@@ -79,12 +79,12 @@ export default class Matrix4 {
         α *= Math.PI / 180
         const cos = Math.cos(α)
         const sin = Math.sin(α)
-        const a = this.elements
         const r = [
-            cos, -sin,
-            sin, cos,
+            cos, -sin, 0, 0,
+            sin, cos, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
         ]
-        this.elements = r
-        this.mul(a);
+        this.mul(r);
     }
 }
