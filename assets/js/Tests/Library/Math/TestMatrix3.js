@@ -122,9 +122,6 @@ export default class TestMatrix3 extends TestMatrix {
 
     /**
      * Test the rotation method.
-     * 
-     * werkt niet correct :(
-     * 
      */
     testRot() {
         console.info('test Matrix3.rot()')
