@@ -1,4 +1,4 @@
-import Matrix2 from './Matrix2.js'
+import Matrix2 from 'Matrix2.js'
 
 /** Class representing a two-dimensional vector. */
 export default class Vector2 {
