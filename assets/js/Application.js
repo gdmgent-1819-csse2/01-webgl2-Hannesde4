@@ -30,10 +30,10 @@ export default class Application {
             .then(response => response.text())
             .then(source => this.shaderSources.fragment = source)
             .catch(error => console.error(error.message))
-        this.run()
+        this.runMainCode()
     }
 
-    run() {
+    runMainCode() {
         const width = 600
         const height = 600
 

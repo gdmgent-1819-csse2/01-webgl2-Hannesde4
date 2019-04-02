@@ -36,7 +36,7 @@ export default class TestMatrix2 extends TestMatrix {
         const m = new Matrix2(a)
         m.add(b)
         const actual = m.elements
-        this.assertIdentical(actual, expected)
+        this.assertActualEqualExpected(actual, expected)
     }
 
     /**
@@ -59,7 +59,7 @@ export default class TestMatrix2 extends TestMatrix {
         const m = new Matrix2(a)
         m.sub(b)
         const actual = m.elements
-        this.assertIdentical(actual, expected)
+        this.assertActualEqualExpected(actual, expected)
     }
 
     /**
@@ -82,7 +82,7 @@ export default class TestMatrix2 extends TestMatrix {
         const m = new Matrix2(a)
         m.mul(b)
         const actual = m.elements
-        this.assertIdentical(actual, expected)
+        this.assertActualEqualExpected(actual, expected)
     }
 
     /**
@@ -105,7 +105,7 @@ export default class TestMatrix2 extends TestMatrix {
         const m = new Matrix2(a)
         m.mul(i)
         const actual = m.elements
-        this.assertIdentical(actual, expected)
+        this.assertActualEqualExpected(actual, expected)
     }
 
     /**
@@ -125,6 +125,6 @@ export default class TestMatrix2 extends TestMatrix {
         const m = new Matrix2(a)
         m.rot(α)
         const actual = m.elements
-        this.assertIdenticalRounded(actual, expected)
+        this.assertActualEqualExpectedRounded(actual, expected)
     }
 }

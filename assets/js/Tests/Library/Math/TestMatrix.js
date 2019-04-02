@@ -5,7 +5,7 @@ export default class TestMatrix {
      * @param {Array} actual - The actual result.
      * @param {Array} expected - The expected result.
      */
-    assertIdentical(actual, expected) {
+    assertActualEqualExpected(actual, expected) {
         for (let i = 0; i < expected.length; i++) {
             if (actual[i] === expected[i]) {
                 console.log(i, 'PASS', `actual: ${actual[i]}`)
@@ -20,7 +20,7 @@ export default class TestMatrix {
      * @param {Array} actual - The actual result.
      * @param {Array} expected - The expected result.
      */
-    assertIdenticalRounded(actual, expected) {
+    assertActualEqualExpectedRounded(actual, expected) {
         for (let i = 0; i < expected.length; i++) {
             const actualRounded = Math.round(actual[i])
             if (actualRounded === expected[i]) {

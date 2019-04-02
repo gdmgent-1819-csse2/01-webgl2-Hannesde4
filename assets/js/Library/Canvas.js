@@ -25,10 +25,10 @@ export default class Canvas {
 
         this.gl = null
         this.program = null
-        this.run()
+        this.runMainCode()
 
 
-        //function to automatically reload the clock with delay of 1 second
+        /** function to automatically reload the clock with delay of 1 second */
         const reloadCanvas = () => {
             setTimeout(() => {
                 this.updateCanvasHandler()
@@ -44,109 +44,64 @@ export default class Canvas {
         console.log('updateCanvas')
         this.clearData()
 
-        // White point in the middle
+        /** code to draw the white point in the middle of the clock */
         this.data.positions.push(0, 0)
         this.data.colors.push(...this.colors.white)
 
-
-        // nieuwe vector maken die gebruikt wordt voor de punten van de uren weer te geven op de klok
-        const v = new Vector2(0, .5)
-        this.data.positions.push(v.x, v.y)
+        /** new vector to draw a dot for every hour on the clock*/
+        const clockVector = new Vector2(0, .5)
+        this.data.positions.push(clockVector.x, clockVector.y)
         this.data.colors.push(...this.colors.white)
-
-        // for-loop die 12 keer loopt, en op elk uur een stip tekent voor het uur
-        for (let i = 0; i < 13; i++){
-            //360/12 
-            v.rot(360/12)
-            this.data.positions.push(v.x, v.y)
+        /** for loop that runs 12 times to draw a dot for every hour on the clock */
+        for (let i = 0; i < 1000; i++){
+            clockVector.rot(360/1000)
+            this.data.positions.push(clockVector.x, clockVector.y)
             this.data.colors.push(...this.colors.white)
         };
 
 
-        // huidige datum in een constante steken
+        /** putting the current date in a variable */
         const time = new Date()
 
-        // for loop that draws lot's of vectors to make the clock hand
+        /** for loop that draws lot's of vectors to make the clock hand */
         for (let i = 0; i < 0.43; i+=0.0005) {
-            // tekent de grootste wijzer (seconden)
-            const seconds = new Vector2(0, [i])
-            // rotatie rond het center -> huidige seconden * -6 voor de spiegeling, 6 * 60 (seconden) = 360°
-            seconds.rot(time.getSeconds() * -6)
-            // positie geven aan de vector
-            this.data.positions.push(seconds.x, seconds.y)
-            // kleur geven aan de vector
+            const secondsVector = new Vector2(0, [i])
+            /** the rotation around the center, calculated bij the current seconds * -6 because the mirroring, and 6 * 60 = 360° */
+            secondsVector.rot(time.getSeconds() * -6)
+            // positioning the vector
+            this.data.positions.push(secondsVector.x, secondsVector.y)
+            // coloring the vector
             this.data.colors.push(...this.colors.red)
         }
 
-        /*
-        Code to draw a single vector to display the minutes
-
-        // tekent de grootste wijzer (seconden)
-        const seconds = new Vector2(0, 0.42)
-        // rotatie rond het center -> huidige seconden * -6 voor de spiegeling, 6 * 60 (seconden) = 360°
-        seconds.rot(time.getSeconds() * -6)
-        // positie geven aan de vector
-        this.data.positions.push(seconds.x, seconds.y)
-        // kleur geven aan de vector
-        this.data.colors.push(...this.colors.red) 
-        */
-
-        // for loop that draws lot's of vectors to make the clock hand
+        /** for loop that draws lot's of vectors to make the clock hand */
         for (let i = 0; i < 0.38; i+=0.0005) {
-            // tekent de grote wijzer (minuten)
             const minutes = new Vector2(0, [i])
-            // rotatie rond het center -> huidige minuten * -6 voor de spiegeling, 6 * 60 (minuten) = 360°
+            /** the rotation around the center, calculated bij the current minutes * -6 because the mirroring, and 6 * 60 = 360°
+             */
             minutes.rot(time.getMinutes() * -6)
-            // positie geven aan de vector
+            // positioning the vector
             this.data.positions.push(minutes.x, minutes.y)
-            // kleur geven aan de vector
+            // coloring the vector
             this.data.colors.push(...this.colors.green)
         }
         
-        /*
-        Code to draw a single vector to display the minutes
-
-        // tekent de grote wijzer (minuten)
-        const minutes = new Vector2(0, 0.38)
-        // rotatie rond het center -> huidige minuten * -6 voor de spiegeling, 6 * 60 (minuten) = 360°
-        minutes.rot(time.getMinutes() * -6)
-        // positie geven aan de vector
-        this.data.positions.push(minutes.x, minutes.y)
-        // kleur geven aan de vector
-        this.data.colors.push(...this.colors.green)
-        */
-
-
         // for loop that draws lot's of vectors to make the clock hand
         for (let i = 0; i < 0.25; i+=0.0005) {
             // tekent de kleine wijzer (uren)
             const hours = new Vector2(0, [i])
-            // rotatie rond het center -> huidige uur * -15 voor de spiegeling, 30 * 12(uren) (want een klokt telt maar 12u) = 360°
+            /** the rotation around the center, calculated bij the current minutes * -30 because the mirroring, and 12 * 30 = 360° */
             hours.rot(time.getHours() * -30)
-            // positie geven aan de vector
+            // positioning the vector
             this.data.positions.push(hours.x, hours.y)
-            // kleur geven aan de vector
+            // coloring the vector
             this.data.colors.push(...this.colors.blue)
         }
-
-
-        /*
-        Code to draw a single vector to display the hours
-
-        // tekent de kleine wijzer (uren)
-        const hours = new Vector2(0, 0.35)
-        // rotatie rond het center -> huidige uur * -15 voor de spiegeling, 30 * 12(uren) (want een klokt telt maar 12u) = 360°
-        hours.rot(time.getHours() * -30)
-        // positie geven aan de vector
-        this.data.positions.push(hours.x, hours.y)
-        // kleur geven aan de vector
-        this.data.colors.push(...this.colors.blue)
-        */
 
         this.drawScene()
     }
 
-    run() {
+    runMainCode() {
         try {
             this.createCanvas()
             this.createShaders()
